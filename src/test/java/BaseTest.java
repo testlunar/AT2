@@ -1,6 +1,8 @@
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.After;
@@ -15,10 +17,10 @@ public class BaseTest {
 
 
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
 
-                    System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
-                    driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
+        driver = new ChromeDriver();
 
 
         baseUrl = properties.getProperty("app.url");
@@ -29,10 +31,9 @@ public class BaseTest {
 
 
     @After
-    public void afterTest(){
+    public void afterTest() {
         driver.quit();
     }
-
 
 
     protected void fillField(By locator, String value) {

@@ -14,9 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class SendAppPage {
-    public SendAppPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-    }
+
 
     @FindBy(id = "surname_vzr_ins_0")
     WebElement surname;
@@ -59,18 +57,18 @@ public class SendAppPage {
 
 
     public SendAppPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+
         Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
         wait.until(ExpectedConditions.visibilityOf(sendButton)).click();
     }
 
-   public void fillField(String fieldName, String value) {
+    public void fillField(String fieldName, String value) {
 
-            // default:  throw new AssertionError("Поле '"+fieldName+"' не объявлено на странице");
-
-        }
+        // default:  throw new AssertionError("Поле '"+fieldName+"' не объявлено на странице");
 
     }
+
+}
 
 
 

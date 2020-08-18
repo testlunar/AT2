@@ -17,19 +17,21 @@ import java.util.concurrent.TimeUnit;
 public class TravelnsurancePage {
 
     WebDriver driver;
-    public TravelnsurancePage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-    }
+
 
 
 
     @FindBy(xpath = "//div[@class='t-content']//*[contains(text(),'Оформить онлайн')]")
     public WebElement sendButton;
 
-    public TravelnsurancePage(WebDriver driver){
+    public TravelnsurancePage(WebDriver driver) {
+        //String signOnline = "//div[@class='t-content']//*[contains(text(),'Оформить онлайн')]";
+        //((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(signOnline)));
+        // driver.findElement(By.xpath(signOnline)).click();
+        // driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
-        PageFactory.initElements(driver, this);
-        Wait<WebDriver> wait=  new WebDriverWait(driver, 5,1000);
+        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+        Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
         wait.until(ExpectedConditions.visibilityOf(sendButton)).click();
 
 

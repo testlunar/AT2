@@ -5,7 +5,7 @@ public class TestProperties {
     private final Properties properties = new Properties();
     private static TestProperties INSTANCE = null;
 
-    private TestProperties(){
+    private TestProperties() {
         System.setProperty("environment", "application");
         try {
             InputStream inStream = new FileInputStream("C:\\Users\\diana\\IdeaProjects\\AT2\\environment.properties");
@@ -19,15 +19,15 @@ public class TestProperties {
     }
 
 
-        public static TestProperties getInstance() {
-            if (INSTANCE == null){
-                INSTANCE = new TestProperties();
-            }
-            return INSTANCE;
+    public static TestProperties getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new TestProperties();
         }
-
-        public Properties getProperties() {
-            return properties;
-        }
+        return INSTANCE;
     }
+
+    public Properties getProperties() {
+        return properties;
+    }
+}
 
