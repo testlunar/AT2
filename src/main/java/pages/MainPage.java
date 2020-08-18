@@ -16,11 +16,11 @@ public class MainPage  {
     WebElement element;
        WebDriver driver;
 
-       @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[4]/nav/div/ul/li[7]/label']")
+       @FindBy(xpath = "//ul[@class='kitt-top-menu__list  kitt-top-menu__list_left']")
     WebElement mainMenu;
 
-   //@FindBy(xpath = "//li[@class='kitt-top-menu__item kitt-top-menu__item_first kitt-top-menu__item_opened']")
-    //WebElement subMenu;
+   @FindBy(xpath = "//div[@class='kitt-top-menu__dropdown']")
+    WebElement subMenu;
 
     public MainPage(WebDriver driver){
         PageFactory.initElements(driver, this);
@@ -28,15 +28,14 @@ public class MainPage  {
 
     public void selectMainMenu( String menuItem){
     //mainMenu.findElement(By.xpath(".//button[@class='lg-menu__link']//*[contains(text(),'"+menuItem+"')]"));
-       driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[4]/nav/div/ul/li[7]/label']")).click();
-
+       mainMenu.findElement(By.xpath(".//label[contains(text(),'"+menuItem+"')]")).click();
 
     }
 
     public void selectSubMenu( String menuItem){
-        //String subMenu1 = "//li[@class='kitt-top-menu__item kitt-top-menu__item_first kitt-top-menu__item_opened']//*[contains(text(),'Страхование путешественников')]";
-        ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//li[@class='kitt-top-menu__item kitt-top-menu__item_first kitt-top-menu__item_opened']//*[contains(text(),'Страхование путешественников')]")));
-        driver.findElement(By.xpath("//li[@class='kitt-top-menu__item kitt-top-menu__item_first kitt-top-menu__item_opened']//*[contains(text(),'Страхование путешественников')]")).click();
+
+        ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//a[contains(text(),'"+menuItem+"')]")));
+        driver.findElement(By.xpath(".//a[contains(text(),'"+menuItem+"')]")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         String originalWindow = driver.getWindowHandle();

@@ -14,7 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class SendAppPage {
-
+    public SendAppPage(WebDriver driver){
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(id = "surname_vzr_ins_0")
     WebElement surname;
@@ -53,7 +55,6 @@ public class SendAppPage {
     WebElement documentDate;
 
     @FindBy(xpath = "//*[contains(text(),'Продолжить')]")
-
     public WebElement sendButton;
 
 
@@ -63,51 +64,14 @@ public class SendAppPage {
         wait.until(ExpectedConditions.visibilityOf(sendButton)).click();
     }
 
-    public void fillField(String fieldName, String value) {
-        switch (fieldName) {
-            case "Имя застрахованного":
-                fillField(name, value);
-                break;
-            case "Фамилия страхователя":
-                fillField(person_lastName, value);
-                break;
-            case "Имя страхователя":
-                fillField(person_firstName, value);
-                break;
-            case "Отчество страхователя":
-                fillField(person_middleName, value);
-                break;
-            case "Пол":
-                new Select(sex).selectByVisibleText("Мужской");
-                break;
-            case "Серия паспорта":
-                fillField(passportSeries, value);
-                break;
-            case "Номер паспорта":
-                fillField(passportNumber, value);
-                break;
-            case "Где выдан":
-                fillField(documentIssue, value);
-                break;
-            case "Дата рождения застрахованного":
-                fillField(birthDate_vzr_ins_0, value);
-                birthDate_vzr_ins_0.sendKeys(Keys.TAB);
-                break;
-            case "Дата рождения страхователя":
-                fillField(person_birthDate, value);
-                person_birthDate.sendKeys(Keys.TAB);
-                break;
-            case "Дата выдачи паспорта":
-                fillField(documentDate, value);
-                documentDate.sendKeys(Keys.TAB);
-                break;
+   public void fillField(String fieldName, String value) {
 
             // default:  throw new AssertionError("Поле '"+fieldName+"' не объявлено на странице");
 
         }
 
     }
-}
+
 
 
 

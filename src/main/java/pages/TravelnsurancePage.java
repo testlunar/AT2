@@ -17,7 +17,9 @@ import java.util.concurrent.TimeUnit;
 public class TravelnsurancePage {
 
     WebDriver driver;
-
+    public TravelnsurancePage(WebDriver driver){
+        PageFactory.initElements(driver, this);
+    }
 
 
 
