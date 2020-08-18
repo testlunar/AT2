@@ -12,7 +12,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseTest {
     protected static WebDriver driver;
-    protected static String baseUrl= "http://www.sberbank.ru/ru/person";;
+    protected static String baseUrl= "http://www.sberbank.ru/ru/person";
+
     public static Properties properties = TestProperties.getInstance().getProperties();
 
 
@@ -21,14 +22,15 @@ public class BaseTest {
 
         System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
         driver = new ChromeDriver();
+
         driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(baseUrl);
     }
 
 
-    //@After
-    //public void afterTest() {        driver.quit();    }
+    @After
+    public void afterTest() {        driver.quit();    }
 
 
     protected void fillField(By locator, String value) {
