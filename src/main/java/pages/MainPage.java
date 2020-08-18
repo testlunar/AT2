@@ -16,48 +16,34 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-public class MainPage {
+public class MainPage extends BasePage {
     WebElement element;
     WebDriver driver;
-    String originalWindow = driver.getWindowHandle();
-    final Set<String> oldWindowsSet = driver.getWindowHandles();
+    //String originalWindow = driver.getWindowHandle();
+    //final Set<String> oldWindowsSet = driver.getWindowHandles();
 
     @FindBy(xpath = "//ul[@class='kitt-top-menu__list  kitt-top-menu__list_left']")
     WebElement mainMenu;
 
-    @FindBy(xpath = "//div[@class='kitt-top-menu__dropdown']")
-    WebElement subMenu;
 
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
 
     public void selectMainMenu(String menuItem) {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         mainMenu.findElement(By.xpath(".//label[contains(text(),'"+menuItem+"')]")).click();
+
 
     }
 
     public void selectSubMenu(String menuItem) {
 
-        //((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//a[contains(text(),'" + menuItem + "')]")));
-        //subMenu.findElement(By.xpath(".//a[contains(text(),'" + menuItem + "')]")).click();
-        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
-        wait.until(ExpectedConditions.visibilityOf(subMenu.findElement(By.xpath(".//a[contains(text(),'"+menuItem+"')]")))).click();
-
-        String newWindowHandle = (new WebDriverWait(driver, 30))
-                .until(new ExpectedCondition<String>() {
-                           public String apply(WebDriver driver) {
-                               Set<String> newWindowsSet = driver.getWindowHandles();
-                               newWindowsSet.removeAll(oldWindowsSet);
-                               return newWindowsSet.size() > 0 ?
-                                       newWindowsSet.iterator().next() : null;
-                           }
-                       }
-                );
-        driver.switchTo().window(newWindowHandle);
+        ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//a[contains(text(),'"+ menuItem +"')]")));
+        driver.findElement(By.xpath("//a[contains(text(),'"+menuItem+"')]")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 
     }
