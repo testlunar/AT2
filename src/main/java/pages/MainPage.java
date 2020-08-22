@@ -11,29 +11,26 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.BaseSteps;
 
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+public class MainPage {
+WebDriver driver= BaseSteps.getDriver();
 
-public class MainPage extends BasePage {
-    WebElement element;
-    WebDriver driver;
-    //String originalWindow = driver.getWindowHandle();
-    //final Set<String> oldWindowsSet = driver.getWindowHandles();
+public MainPage(){
+        PageFactory.initElements(BaseSteps.getDriver(), this);
+        }
 
     @FindBy(xpath = "//ul[@class='kitt-top-menu__list  kitt-top-menu__list_left']")
     WebElement mainMenu;
 
 
-    public MainPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
 
 
     public void selectMainMenu(String menuItem) {
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
         mainMenu.findElement(By.xpath(".//label[contains(text(),'"+menuItem+"')]")).click();
 
 

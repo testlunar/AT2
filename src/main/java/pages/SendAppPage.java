@@ -1,9 +1,12 @@
 package pages;
 
+
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
+import steps.BaseSteps;
 
 import java.util.List;
 import java.util.Set;
@@ -11,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
-public class SendAppPage extends BasePage {
+public class SendAppPage extends BasePageObject {
 
 
     @FindBy(id = "surname_vzr_ins_0")
@@ -53,28 +56,19 @@ public class SendAppPage extends BasePage {
     @FindBy(id = "email")
     WebElement email;
 
-    public SendAppPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+    @FindBy(xpath = "//div[@class='row']//*[contains(text(),'Оформить')]")
+    public WebElement sendButton;
 
-    }
+    @FindBy(xpath ="//div[@class='row']//*[contains(text(),'Продолжить')]")
+    public WebElement  sendButton2;
 
-
-    public void waitSendAppClickable() {
-
-
-        String sendButton = "//div[@class='row']//*[contains(text(),'Оформить')]";
-        ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(sendButton)));
-        driver.findElement(By.xpath(sendButton)).click();
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-
-
+    public SendAppPage() {
+        PageFactory.initElements(BaseSteps.getDriver(), this);
+         this.driver= driver;
     }
 
 
     public void fillField(String fieldName, String value) {
-        ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//div[@class='row']//*[contains(text(),'Продолжить')]")));
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         switch (fieldName) {
             case "Фамилия застрахованного":
                 fillField(surname, value);
@@ -125,16 +119,12 @@ public class SendAppPage extends BasePage {
     }
 
     public void submitApp() {
-        String sendButton2 = "//div[@class='row']//*[contains(text(),'Продолжить')]";
-        ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(sendButton2)));
-        driver.findElement(By.xpath(sendButton2)).click();
-        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-        assertEquals("При заполнении данных произошла ошибка", driver.findElement(By.xpath("//div[@class='alert-form alert-form-error']")).getText());
+        new SendAppPage().sendButton2.click();
+        assertEquals("При заполнении данных произошла ошибка", BaseSteps.getDriver().findElement(By.xpath("//div[@class='alert-form alert-form-error']")).getText());
         System.out.println("Тест завершен!");
     }
 
     public String getFillField(String fieldName) {
-
         switch (fieldName) {
             case "Фамилия застрахованного":
                 return surname.getAttribute("value");
@@ -164,10 +154,19 @@ public class SendAppPage extends BasePage {
                 email.getAttribute("value");
 
         }
-        throw new AssertionError("Поле не объявлено на странице");
+        throw new AssertionError("Поле '" + fieldName + "' не объявлено на странице");
     }
 
+    public void checkFieldErrorMessage(String field, String errorMessage) {
 
+        String xpath = "//form-control-label[@title='" + field + "']//*[@class='invalid-validate form-control__message']";
+        String actualValue = BaseSteps.getDriver().findElement(By.xpath(xpath)).getText();
+        Assert.assertTrue(String.format("Получено значение [%s]. Ожидалось [%s]", actualValue, errorMessage),
+                actualValue.contains(errorMessage));
+
+        assertEquals("При заполнении данных произошла ошибка", BaseSteps.getDriver().findElement(By.xpath("//div[@class='alert-form alert-form-error']")).getText());
+        System.out.println("Получена корректная ошибка на кнопке 'Продолжить'");
+    }
 }
 
 
