@@ -1,11 +1,10 @@
-package util;
+package ru.sberbank.util;
 
-import org.junit.Ignore;
+
 import org.junit.runner.notification.Failure;
-import ru.yandex.qatools.allure.junit.AllureRunListener;
-import steps.BaseSteps;
 
-public class AllureListener extends AllureRunListener {
+
+public class AllureReporter extends ru.yandex.qatools.allure.cucumberjvm.AllureReporter {
 
     @Override
     public void testFailure(Failure failure){

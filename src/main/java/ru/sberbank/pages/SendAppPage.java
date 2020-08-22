@@ -1,4 +1,4 @@
-package pages;
+package ru.sberbank.pages;
 
 
 import org.junit.Assert;
@@ -6,11 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
-import steps.BaseSteps;
-
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
+import ru.sberbank.steps.BaseSteps;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,9 +1,10 @@
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Title;
-import steps.BaseSteps;
-import steps.MainPageSteps;
-import steps.SendAppSteps;
-import steps.TravelInsuranceSteps;
+import ru.sberbank.steps.BaseSteps;
+import ru.sberbank.steps.MainPageSteps;
+import ru.sberbank.steps.SendAppSteps;
+import ru.sberbank.steps.TravelInsuranceSteps;
 
 import java.util.HashMap;
 
@@ -15,7 +16,7 @@ public class ExampleTest extends BaseSteps {
 
 
     @Title("Оформить страхование для путешественников")
-    @Test
+    @Ignore
     public void Test() throws InterruptedException {
         testData.put("Фамилия застрахованного", "Иванов");
         testData.put("Имя застрахованного", "Иван");

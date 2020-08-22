@@ -1,9 +1,8 @@
-package steps;
+package ru.sberbank.steps;
 
-import pages.TravelInsurancePage;
+import ru.sberbank.pages.TravelInsurancePage;
 import ru.yandex.qatools.allure.annotations.Step;
 
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class TravelInsuranceSteps extends BaseSteps {

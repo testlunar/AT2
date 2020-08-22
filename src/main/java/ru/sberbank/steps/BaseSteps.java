@@ -1,4 +1,4 @@
-package steps;
+package ru.sberbank.steps;
 
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -1,6 +1,6 @@
-package steps;
+package ru.sberbank.steps;
 
-import pages.SendAppPage;
+import ru.sberbank.pages.SendAppPage;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.HashMap;

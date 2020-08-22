@@ -1,13 +1,12 @@
-package pages;
+package ru.sberbank.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import steps.BaseSteps;
+import ru.sberbank.steps.BaseSteps;
 
 
-
-    public class BasePageObject  {
+public class BasePageObject  {
 
 
         protected WebDriver driver;

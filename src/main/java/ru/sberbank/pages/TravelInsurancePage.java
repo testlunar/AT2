@@ -1,18 +1,13 @@
-package pages;
+package ru.sberbank.pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import steps.BaseSteps;
+import ru.sberbank.steps.BaseSteps;
 
-import java.util.Iterator;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 public class TravelInsurancePage extends BasePageObject {
 

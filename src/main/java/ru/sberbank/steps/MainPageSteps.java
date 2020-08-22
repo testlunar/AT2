@@ -1,7 +1,6 @@
-package steps;
+package ru.sberbank.steps;
 
-import org.openqa.selenium.WebDriver;
-import pages.MainPage;
+import ru.sberbank.pages.MainPage;
 import ru.yandex.qatools.allure.annotations.Step;
 
 public class MainPageSteps  {
