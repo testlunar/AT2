@@ -9,7 +9,7 @@ import ru.sberbank.steps.BaseSteps;
 public class BasePageObject  {
 
 
-        protected WebDriver driver;
+
 
         public BasePageObject() {
             PageFactory.initElements(BaseSteps.getDriver(), this);

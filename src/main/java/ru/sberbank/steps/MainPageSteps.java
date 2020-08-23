@@ -9,7 +9,7 @@ public class MainPageSteps  {
 
     @Step("выбран пункт меню {0}")
     public void selectMenuItem(String menuItem){
-        new MainPage().selectMainMenu(menuItem);
+                new MainPage().selectMainMenu(menuItem);
     }
 
 

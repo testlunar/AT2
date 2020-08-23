@@ -5,7 +5,7 @@ import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.concurrent.TimeUnit;
 
-public class TravelInsuranceSteps extends BaseSteps {
+public class TravelInsuranceSteps  {
 
 
 
@@ -14,7 +14,7 @@ public class TravelInsuranceSteps extends BaseSteps {
     public void waitSendAppClickable() throws InterruptedException {
 
         new TravelInsurancePage().waitButtonClickable();
-        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+        BaseSteps.getDriver().manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
     }
 

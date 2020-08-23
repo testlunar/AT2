@@ -9,10 +9,11 @@ import org.openqa.selenium.support.PageFactory;
 import ru.sberbank.steps.BaseSteps;
 
 import java.util.concurrent.TimeUnit;
-public class MainPage {
-WebDriver driver= BaseSteps.getDriver();
+public class MainPage  {
 
-public MainPage(){
+
+
+    public MainPage(){
         PageFactory.initElements(BaseSteps.getDriver(), this);
         }
 
@@ -23,7 +24,8 @@ public MainPage(){
 
 
     public void selectMainMenu(String menuItem) {
-        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+
+        BaseSteps.getDriver().manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
         mainMenu.findElement(By.xpath(".//label[contains(text(),'"+menuItem+"')]")).click();
 
 
@@ -31,10 +33,9 @@ public MainPage(){
 
     public void selectSubMenu(String menuItem) {
 
-        ((JavascriptExecutor) driver).executeScript("return arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//a[contains(text(),'"+ menuItem +"')]")));
-        driver.findElement(By.xpath("//a[contains(text(),'"+menuItem+"')]")).click();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
+        ((JavascriptExecutor) BaseSteps.getDriver()).executeScript("return arguments[0].scrollIntoView(true);", BaseSteps.getDriver().findElement(By.xpath("//a[contains(text(),'"+ menuItem +"')]")));
+        BaseSteps.getDriver().findElement(By.xpath("//a[contains(text(),'"+menuItem+"')]")).click();
+        BaseSteps.getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     }
 

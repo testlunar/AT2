@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertTrue;
 
-public class SendAppSteps extends BaseSteps {
+public class SendAppSteps  {
 
     @Step("поле {0} заполняется значением {1}")
     public void fillField(String field, String value){
@@ -46,8 +46,13 @@ public class SendAppSteps extends BaseSteps {
     }
 
     @Step("проверить на ошибку в пустых полях")
-    public void checkError(String field, String errorMessage) {
+    public void checkFieldError(String field, String errorMessage) {
         new SendAppPage().checkFieldErrorMessage(field, errorMessage);
+    }
+
+    @Step("проверить ошибку на кнопке Продолжить")
+    public void checkSendButtonError() {
+        new SendAppPage().checkSendButtonErrorMessage();
     }
 
 }

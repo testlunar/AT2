@@ -60,7 +60,7 @@ public class SendAppPage extends BasePageObject {
 
     public SendAppPage() {
         PageFactory.initElements(BaseSteps.getDriver(), this);
-         this.driver= driver;
+
     }
 
 
@@ -159,10 +159,13 @@ public class SendAppPage extends BasePageObject {
         String actualValue = BaseSteps.getDriver().findElement(By.xpath(xpath)).getText();
         Assert.assertTrue(String.format("Получено значение [%s]. Ожидалось [%s]", actualValue, errorMessage),
                 actualValue.contains(errorMessage));
+    }
 
+    public void checkSendButtonErrorMessage() {
         assertEquals("При заполнении данных произошла ошибка", BaseSteps.getDriver().findElement(By.xpath("//div[@class='alert-form alert-form-error']")).getText());
         System.out.println("Получена корректная ошибка на кнопке 'Продолжить'");
     }
+
 }
 
 

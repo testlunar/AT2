@@ -1,3 +1,5 @@
+package ru.sberbank.util;
+
 import java.io.*;
 import java.util.Properties;
 
@@ -5,22 +7,15 @@ public class TestProperties {
     private final Properties properties = new Properties();
     private static TestProperties INSTANCE = null;
 
-    private TestProperties(){
 
-        System.setProperty("environment", "application");
 
+     private TestProperties(){
         try {
-
             properties.load(new FileInputStream(new File("./" + System.getProperty("environment") + ".properties")));
-
         } catch (IOException e) {
-
             e.printStackTrace();
-
         }
-
     }
-
 
     public static TestProperties getInstance() {
         if (INSTANCE == null) {
