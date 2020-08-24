@@ -67,7 +67,7 @@ public class SendAppPage extends BasePageObject {
     public void fillField(String fieldName, String value) {
         switch (fieldName) {
             case "Фамилия застрахованного":
-                fillField(surname, value);
+                fillField(surname,value);
                 break;
             case "Имя застрахованного":
                 fillField(name, value);

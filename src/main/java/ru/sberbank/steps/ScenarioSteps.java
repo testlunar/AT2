@@ -39,11 +39,10 @@ public class ScenarioSteps {
         sendAppSteps.sendButton();
     }
 
-
-    @When("^заполнятся поля:$")
-    public void fillForm(DataTable fields){
+    @Then("^значения полей равны:$")
+    public void checkFillForm(DataTable fields){
         fields.asMap(String.class, String.class)
-                .forEach((field, value) -> sendAppSteps.fillField(field, value));
+                .forEach((field, value) -> sendAppSteps.checkFillField(field, value));
     }
 
     @When("^нажата кнопка Продолжить$")
